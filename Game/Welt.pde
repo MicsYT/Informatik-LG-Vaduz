@@ -1,6 +1,7 @@
 // Interne Varariablen
 int cCounter = 0;
 boolean timerStatus = true;
+int vTime = 0;
 class Welt
 {
   // Varariablen des Objekts speichern
@@ -28,32 +29,23 @@ class Welt
   // Time-tracker (Zeit seit "launch")
   void time()
   {
+    
     fill(0, 0, 0);
     textAlign(CENTER);
     textSize(30);
     if (timerStatus == true)
     {
+      vTime = millis() - cCounter;
       // cTime tracks runtime
       int cTime = millis();
       text("Zeit: " + ((cTime-cCounter)/(1000*60))%60 + "m " + ((cTime-cCounter)/1000)%60 + "s", 100, 100);
-      if (movePlayer == false)
-      {
-        // cCounter speichert cTime wenn collision auftritt
-        cCounter = cTime;
-        // Timer wird "resettet"
-        cTime = (millis() - cCounter);
-        // cCounter (Time spent until fail) wird in der Konsole ausgegeben
-        println(cCounter);
-        // Timer wird gestoppt
-        timerStatus = false;
-      }
+     
     }
   }
-
   // Ausgabe der insgesamt verbrachten Zeit
   int getTime()
   {
-    return cCounter;
+    return vTime;
   }
 
   // Ausgabe vom Status des Timers

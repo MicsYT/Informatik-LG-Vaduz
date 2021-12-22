@@ -49,16 +49,19 @@ void draw()
   {
     l1 = true;
     l2 = l3 = r1 =  false;
+    cCounter = millis();
   }
   if (mousePressed && level_2 == true)
   {
     l2 = true;
     l1 = l3 = r1 =  false;
+     cCounter = millis();
   }
   if (mousePressed && level_3 == true)
   {
     l3 = true;
     l1 = l2 = r1 =  false;
+     cCounter = millis();
   }
 
   if(l1 == true)
@@ -67,6 +70,7 @@ void draw()
     w.erzeugen();
     o1.erzeugen();
     f.erzeugen();
+    timerStatus = true;
   }
   else if(l2 == true)
   {
@@ -74,6 +78,7 @@ void draw()
     w.erzeugen();
     o2.erzeugen();
     f.erzeugen();
+    timerStatus = true;
   }
   else if(l3 == true)
   {
@@ -81,6 +86,7 @@ void draw()
     w.erzeugen();
     o3.erzeugen();
     f.erzeugen();
+    timerStatus = true;
   }
 
   // Checken ob der Move Legal ist
@@ -151,6 +157,8 @@ void draw()
     textSize(30);
     textAlign(CENTER);
     text("YOU LOST! \n Time: " + s.getTimeSpent() + "\n SCORE:"+ s.getScore(), wWindow / 2, 400);
+    cCounter = millis();
+    timerStatus = false;
     m.reset();
   if (mousePressed &&  reset_1 == true)
   {
